@@ -37,6 +37,7 @@ USER build
 WORKDIR ${EXTRACT}
 
 ENV CTVERS=${CTVERS:-1.22.0}
+ENV TGT_ARCH=${TGT_ARCH:-x86_64-unknown-linux-gnu}
 ENV TARBALL=crosstool-ng-${CTVERS}.tar.xz
 ENV DL=http://crosstool-ng.org/download/crosstool-ng/${TARBALL}
 
@@ -52,7 +53,7 @@ ENV PATH=${EXTRACT}/bin:/home/build/bin:${PATH}
 
 WORKDIR ${BUILD}
 
-RUN ct-ng x86_64-unknown-linux-gnu 
+RUN ct-ng ${TGT_ARCH}
 RUN ct-ng source
 # Either run the rm -rf .build command, or have a ~8GB layer. Your call.
 RUN ct-ng build && rm -rf .build

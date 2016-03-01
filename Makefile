@@ -5,7 +5,7 @@ CT_VERSION	= 1.22.0
 SRC_DIR		= src
 TGT_ARCH	= x86_64-unknown-linux-gnu
 
-DOCKER_BUILD_ENV	= CT_VERSION=$(CT_VERSION)
+DOCKER_BUILD_ENV	= CT_VERSION=$(CT_VERSION) TGT_ARCH=$(TGT_ARCH)
 DOCKER_RUN_ENV		= -e TGT_ARCH=$(TGT_ARCH)
 
 all: build extract-toolchain
