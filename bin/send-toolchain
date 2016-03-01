@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+function abort () {
+	echo "ABORT: $*" >&2
+	exit 1
+}
+
+topdir=/ctng/build
+test -d $topdir || abort "Top dir $topdir does not exist"
+test -n "TGT_ARCH" || abort "TGT_ARCH not set"
+test -d "$TGT_ARCH" || abort "No `pwd`/${TGT_ARCH} directory"
+
+# Send a tar archive of the toolchain to stdout.
+tar cf - $TGT_ARCH
