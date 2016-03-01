@@ -55,5 +55,5 @@ WORKDIR ${BUILD}
 RUN ct-ng x86_64-unknown-linux-gnu 
 RUN ct-ng source
 # Either run the rm -rf .build command, or have a ~8GB layer. Your call.
-RUN test -z "$CTNG_INHIBIT_BUILD" || ct-ng build && rm -rf .build
+RUN ct-ng build && rm -rf .build
 
