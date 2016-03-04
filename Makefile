@@ -27,4 +27,4 @@ fetch-sources:
 
 fetch-toolchain:
 	docker run $(DOCKER_RUN_ENV) $(IMG_NAME):$(CT_VERSION) send-toolchain | \
-		gzip --best >ct-ng-$(TGT_ARCH).tar.gz
+		gzip --best >ct-ng-$(CT_VERSION)-$(TGT_ARCH).tar.gz
