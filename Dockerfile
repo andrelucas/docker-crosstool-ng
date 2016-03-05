@@ -56,5 +56,5 @@ WORKDIR ${BUILD}
 RUN ct-ng ${TGT_ARCH}
 RUN ct-ng source
 # Either run the rm -rf .build command, or have a ~8GB layer. Your call.
-RUN ct-ng build && rm -rf .build
+RUN if test -z "CTNG_NO_BUILD" ; then ct-ng build && rm -rf .build; else exit 0; fi
 

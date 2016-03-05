@@ -28,3 +28,8 @@ fetch-sources:
 fetch-toolchain:
 	docker run $(DOCKER_RUN_ENV) $(IMG_NAME):$(CT_VERSION) send-toolchain | \
 		gzip --best >ct-ng-$(CT_VERSION)-$(TGT_ARCH).tar.gz
+
+develop:
+	env $(DOCKER_BUILD_ENV) CTNG_NO_BUILD=1 \
+		docker build --rm -t $(IMG_NAME)-dev . && \
+		docker run -ti $(IMG_NAME)-dev /bin/bash
